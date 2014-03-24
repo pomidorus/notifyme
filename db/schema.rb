@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324100443) do
+ActiveRecord::Schema.define(version: 20140324181159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "notify_events", force: true do |t|
+    t.string  "title",                  null: false
+    t.boolean "closed", default: false
+  end
 
   create_table "tickets", force: true do |t|
     t.string   "title"

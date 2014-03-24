@@ -23,11 +23,23 @@ class TicketsController < ApplicationController
 
   # POST /tickets
   # POST /tickets.json
+
+  class NotifyService
+    def initialize(title)
+      @title = title
+    end
+
+    def notify
+      NotifyEvent.create!({title: @title})
+    end
+  end
+
   def create
     @ticket = Ticket.new(ticket_params)
 
     respond_to do |format|
       if @ticket.save
+        NotifyService.new(@ticket.title).notify
         format.html { redirect_to root_path, notice: 'Ticket was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ticket }
       else
