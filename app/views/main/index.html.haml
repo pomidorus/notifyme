@@ -4,4 +4,7 @@
     %p Приложение для пуш нотификации при создании нового тикета
     %a{href: '/'} Авторизация
   .small-2.large-12.columns{style: 'margin: 56px 0px 0px 0px;'}
+    - unless notice.blank?
+      %p#notice
+        .alert-box.success.radius{data: {alert: ''}}= notice
     = link_to 'Новый тикет', new_ticket_path

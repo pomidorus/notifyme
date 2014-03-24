@@ -1,9 +1,12 @@
-%p#notice= notice
+.row
+  .small-2.large-12.columns
 
-%p
-  %b Title:
-  = @ticket.title
+    %p#notice= notice
 
-= link_to 'Edit', edit_ticket_path(@ticket)
-\|
-= link_to 'Back', tickets_path
+    %p
+      %b Title:
+      = @ticket.title
+
+    = link_to 'Edit', edit_ticket_path(@ticket)
+    \|
+    = link_to 'Back', tickets_path
