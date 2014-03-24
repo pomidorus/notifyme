@@ -4,7 +4,7 @@
 
 #setTimeout(alert, 3000)
 
-NotifyEvent =
+@NotifyEvent =
   notify: ->
     setTimeout @request, 3000
 
