@@ -25,12 +25,13 @@ class TicketsController < ApplicationController
   # POST /tickets.json
 
   class NotifyService
-    def initialize(title)
+    def initialize(title, body)
       @title = title
+      @body = body
     end
 
     def notify
-      NotifyEvent.create!({title: @title})
+      NotifyEvent.create!({title: @title, body: @body})
     end
   end
 
@@ -39,7 +40,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        NotifyService.new(@ticket.title).notify
+        NotifyService.new(@ticket.title, params[:body_html]).notify
         format.html { redirect_to root_path, notice: 'Ticket was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ticket }
       else
@@ -83,4 +84,5 @@ class TicketsController < ApplicationController
     def ticket_params
       params.require(:ticket).permit(:title)
     end
+
 end

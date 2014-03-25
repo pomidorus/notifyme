@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325115947) do
+ActiveRecord::Schema.define(version: 20140325185829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140325115947) do
   create_table "notify_events", force: true do |t|
     t.string  "title",                  null: false
     t.boolean "closed", default: false
+    t.string  "body"
   end
 
   create_table "tickets", force: true do |t|

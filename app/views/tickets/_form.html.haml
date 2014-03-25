@@ -9,5 +9,9 @@
   .field
     = f.label :title
     = f.text_field :title
-  .actions
+  .field
+    = label_tag :body_html
+    = text_field_tag :body_html
+    = "<div>Клиент: Хохлов</div><a href='/'>64736</a>"
+  .actions{style: 'margin: 20px 0;'}
     = f.submit 'Сохранить'
