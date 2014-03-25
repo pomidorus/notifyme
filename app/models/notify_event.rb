@@ -1,3 +1,3 @@
 class NotifyEvent < ActiveRecord::Base
-  attr_protected :body, :title
+  attr_accessible :body, :title
 end
