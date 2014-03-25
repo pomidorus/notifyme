@@ -77,4 +77,6 @@ Notifyme::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.secret_key = 'fef7fb5f66671698eb3ada6e099ee27b1fcbabad83cdbb44418cca5c879fcde3e1a46a47515b552c35febae65b8e053eb8e349a386f099796a39cb0cba23ccda'
 end
