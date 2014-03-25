@@ -3,6 +3,7 @@
     %h1 Нотифай Ми эбаут тикетс криэйт
     %p Приложение для пуш нотификации при создании нового тикета
     - if user_signed_in?
+      = link_to "Выйти", destroy_user_session_path, method: :delete
     - else
       = link_to "Авторизация", new_user_session_path
 
@@ -10,7 +11,11 @@
     - unless notice.blank?
       %p#notice
         .alert-box.success.radius{data: {alert: ''}}= notice
-    = link_to 'Новый тикет', new_ticket_path
+    - if current_user
+      - if current_user.role == 'reg'
+        = link_to 'Новый тикет', new_ticket_path
 
   .small-2.large-12.columns{style: 'margin: 56px 0px 0px 0px;'}
-    = show_tickets(tickets_url)
+    - if current_user
+      - if current_user.role == 'view'
+        = show_tickets(tickets_url)
