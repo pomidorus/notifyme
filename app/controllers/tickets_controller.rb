@@ -41,7 +41,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        NotifyService.new(@ticket.title, params[:body_html]).notify
+        NotifyService.new(@ticket.title, body_html_params).notify
         format.html { redirect_to root_path, notice: 'Ticket was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ticket }
       else
@@ -84,6 +84,10 @@ class TicketsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
       params.require(:ticket).permit(:title)
+    end
+
+    def body_html_params
+      params.require(:body_html)
     end
 
 end
