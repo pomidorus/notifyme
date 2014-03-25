@@ -1,3 +1,4 @@
 .alert-box.success.radius{data: {alert: ''}}
   = notify_event.title
+  = notify_event.body.html_safe unless notify_event.body.blank?
   %a.close{href: '#'}= '&times;'.html_safe

@@ -24,6 +24,7 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
 
+  #вынести в енджин
   class NotifyService
     def initialize(title, body)
       @title = title
