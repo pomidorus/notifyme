@@ -55,7 +55,7 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1.json
   def update
     respond_to do |format|
-      if @ticket.update(ticket_params)
+      if @ticket.update(params[:ticket])
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { head :no_content }
       else
